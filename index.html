@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Personal Wealth Manager</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #0d3b3e 0%, #1a6b6e 50%, #0d3b3e 100%);
+      min-height: 100vh;
+      padding: 40px 16px;
+      color: #e0f2f1;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 48px 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .app-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #80cbc4;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 13px;
+      color: #80cbc4;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #b2dfdb;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(178, 223, 219, 0.2);
+    }
+
+    p, li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #cce8e6;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+
+    li { margin-bottom: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    th {
+      background: rgba(0,0,0,0.25);
+      color: #b2dfdb;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: #cce8e6;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge-none {
+      background: rgba(0,200,150,0.15);
+      color: #80cbc4;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    a { color: #80cbc4; }
+    a:hover { color: #ffffff; }
+
+    .contact-box {
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 12px;
+    }
+
+    .contact-box p { margin-bottom: 6px; }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #4db6ac;
+    }
+
+    @media (max-width: 540px) {
+      .container { padding: 32px 20px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <p class="app-title">Personal Wealth Manager</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 18, 2026</p>
+
+    <!-- 1 -->
+    <h2>1. Overview</h2>
+    <p>Personal Wealth Manager ("the App") is a personal finance tracking application for Android. This policy explains what data we collect, why we collect it, and how it is used.</p>
+    <p style="margin-top:10px;">We do <strong>not</strong> sell, share, or monetize your data. We do <strong>not</strong> use analytics or advertising SDKs of any kind.</p>
+
+    <!-- 2 -->
+    <h2>2. Data We Collect and Why</h2>
+
+    <p><strong>2.1 SMS Messages</strong><br>
+    <em>Permissions: READ_SMS, RECEIVE_SMS</em></p>
+    <p style="margin-top:8px;">The App reads incoming SMS messages only from recognized bank senders (e.g. ICICI, SBI, Kotak, Indusind, Bank of Baroda) to automatically create expense records. SMS content is never uploaded to any third party. Only bank transaction SMS are processed — all others are ignored. Parsed transaction data is stored locally on your device only.</p>
+
+    <p style="margin-top:16px;"><strong>2.2 Account Credentials</strong></p>
+    <p style="margin-top:8px;">Your email address and session token are stored locally on your device to keep you signed in. Your Zerodha API Key and Secret are transmitted to our backend server solely to fetch your stock holdings. They are not stored on our servers beyond the active session.</p>
+
+    <p style="margin-top:16px;"><strong>2.3 Financial Data</strong></p>
+    <p style="margin-top:8px;">The App stores the following locally on your device:</p>
+    <ul>
+      <li>Bank transaction records (parsed from bank SMS)</li>
+      <li>Stock holdings fetched from Zerodha</li>
+      <li>Gold and metals portfolio data entered manually</li>
+    </ul>
+
+    <p style="margin-top:16px;"><strong>2.4 Notifications</strong><br>
+    <em>Permission: POST_NOTIFICATIONS</em></p>
+    <p style="margin-top:8px;">Used only to notify you when a bank SMS has been automatically recorded as a transaction.</p>
+
+    <!-- 3 -->
+    <h2>3. Data Storage</h2>
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>Where Stored</th>
+        <th>Encrypted</th>
+      </tr>
+      <tr>
+        <td>Session token</td>
+        <td>Local device (SharedPreferences)</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Email address</td>
+        <td>Local device (SharedPreferences)</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Transaction records</td>
+        <td>Local device (Room database)</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Zerodha credentials</td>
+        <td>Transmitted to backend; not stored locally</td>
+        <td>N/A</td>
+      </tr>
+    </table>
+    <p>Your data is not synced to any cloud service except through our backend API (hosted at wealth-backend-demo.onrender.com) which handles authentication and Zerodha data fetching. Encryption of locally stored data is planned for a future update.</p>
+
+    <!-- 4 -->
+    <h2>4. Data We Do NOT Collect</h2>
+    <ul>
+      <li>Location data</li>
+      <li>Contacts, camera, or microphone</li>
+      <li>Advertising or analytics data</li>
+      <li>Usage behavior or tracking</li>
+      <li>Personal (non-bank) SMS messages</li>
+    </ul>
+
+    <!-- 5 -->
+    <h2>5. Third-Party Services</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Purpose</th>
+        <th>Their Privacy Policy</th>
+      </tr>
+      <tr>
+        <td>Zerodha Kite API</td>
+        <td>Fetch stock holdings</td>
+        <td><a href="https://zerodha.com/policies/privacy" target="_blank">zerodha.com/policies/privacy</a></td>
+      </tr>
+      <tr>
+        <td>Render</td>
+        <td>Backend server hosting</td>
+        <td><a href="https://render.com/privacy" target="_blank">render.com/privacy</a></td>
+      </tr>
+    </table>
+    <p>No other third-party services are used.</p>
+
+    <!-- 6 -->
+    <h2>6. Data Retention and Deletion</h2>
+    <p>All financial data is stored locally on your device. Uninstalling the App removes all locally stored data. To request deletion of any data held on our backend server, contact us at the email below.</p>
+
+    <!-- 7 -->
+    <h2>7. Children's Privacy</h2>
+    <p>This App is not intended for users under 18 years of age. We do not knowingly collect data from minors.</p>
+
+    <!-- 8 -->
+    <h2>8. Changes to This Policy</h2>
+    <p>We may update this policy as the App evolves. Changes will be reflected with a new "Last updated" date. Continued use of the App constitutes acceptance of the updated policy.</p>
+
+    <!-- 9 -->
+    <h2>9. Contact</h2>
+    <div class="contact-box">
+      <p><strong>App:</strong> Personal Wealth Manager</p>
+      <p><strong>Developer:</strong> Tanmay Rane</p>
+      <p><strong>Email:</strong> <a href="mailto:tanmayrane3-del@users.noreply.github.com">Contact via GitHub</a></p>
+    </div>
+
+    <footer>
+      &copy; 2026 Personal Wealth Manager &nbsp;·&nbsp; All rights reserved
+    </footer>
+
+  </div>
+</body>
+</html>
