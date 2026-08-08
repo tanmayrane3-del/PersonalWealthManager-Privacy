@@ -55,6 +55,13 @@
       border-bottom: 1px solid rgba(178, 223, 219, 0.2);
     }
 
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 22px 0 6px;
+    }
+
     p, li {
       font-size: 15px;
       line-height: 1.7;
@@ -68,11 +75,22 @@
 
     li { margin-bottom: 6px; }
 
+    .perm {
+      font-size: 13px;
+      color: #80cbc4;
+      font-style: italic;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 16px 0;
       font-size: 14px;
+      min-width: 460px;
     }
 
     th {
@@ -87,17 +105,20 @@
       padding: 10px 14px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       color: #cce8e6;
+      vertical-align: top;
     }
 
     tr:last-child td { border-bottom: none; }
 
-    .badge-none {
-      background: rgba(0,200,150,0.15);
-      color: #80cbc4;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 12px;
+    .callout {
+      background: rgba(255, 183, 77, 0.10);
+      border-left: 3px solid #ffb74d;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
     }
+
+    .callout p { color: #ffe0b2; }
 
     a { color: #80cbc4; }
     a:hover { color: #ffffff; }
@@ -129,111 +150,171 @@
 
     <p class="app-title">Personal Wealth Manager</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: March 18, 2026</p>
+    <p class="updated">Last updated: August 8, 2026</p>
 
     <!-- 1 -->
     <h2>1. Overview</h2>
-    <p>Personal Wealth Manager ("the App") is a personal finance tracking application for Android. This policy explains what data we collect, why we collect it, and how it is used.</p>
-    <p style="margin-top:10px;">We do <strong>not</strong> sell, share, or monetize your data. We do <strong>not</strong> use analytics or advertising SDKs of any kind.</p>
+    <p>Personal Wealth Manager ("the App") is a personal finance tracking application for Android. This policy explains what data we collect, where it is stored, who it is shared with, and how you can have it deleted.</p>
+    <p style="margin-top:10px;">The App is <strong>account-based and server-backed</strong>. You create an account, and your financial records are stored on our backend server so they are available across sessions and devices. The App is not an offline-only tool.</p>
+    <p style="margin-top:10px;">We do <strong>not</strong> sell or rent your data. We do <strong>not</strong> use advertising or analytics SDKs of any kind.</p>
 
     <!-- 2 -->
     <h2>2. Data We Collect and Why</h2>
 
-    <p><strong>2.1 SMS Messages</strong><br>
-    <em>Permissions: READ_SMS, RECEIVE_SMS</em></p>
-    <p style="margin-top:8px;">The App reads incoming SMS messages only from recognized bank senders (e.g. ICICI, SBI, Kotak, Indusind, Bank of Baroda) to automatically create expense records. SMS content is never uploaded to any third party. Only bank transaction SMS are processed — all others are ignored. Parsed transaction data is stored locally on your device only.</p>
+    <h3>2.1 Account Information</h3>
+    <p>When you register, we collect and store on our server your <strong>name, email address, and phone number</strong>, together with a password used to authenticate you. We also record your <strong>IP address and browser/device user-agent</strong> against each login session, in order to manage sessions and detect unauthorised access.</p>
 
-    <p style="margin-top:16px;"><strong>2.2 Account Credentials</strong></p>
-    <p style="margin-top:8px;">Your email address and session token are stored locally on your device to keep you signed in. Your Zerodha API Key and Secret are transmitted to our backend server solely to fetch your stock holdings. They are not stored on our servers beyond the active session.</p>
+    <h3>2.2 Bank SMS Messages</h3>
+    <p class="perm">Permissions: READ_SMS, RECEIVE_SMS</p>
+    <p style="margin-top:8px;">With your permission, the App reads incoming SMS messages in order to create expense and income records automatically, so you do not have to enter every transaction by hand.</p>
 
-    <p style="margin-top:16px;"><strong>2.3 Financial Data</strong></p>
-    <p style="margin-top:8px;">The App stores the following locally on your device:</p>
+    <p style="margin-top:12px;"><strong>Which messages are read.</strong> Only messages whose sender ID matches a recognised bank shortcode are processed. At present these are ICICI, SBI, HDFC, Kotak, IndusInd, Bank of Baroda, and Federal Bank. Messages from any other sender — personal messages, OTPs from other services, promotional SMS — are discarded on your device and never leave it.</p>
+
+    <div class="callout">
+      <p><strong>Important — please read.</strong> To extract the amount, date, merchant and account details from a bank SMS, the <strong>full text of that message, along with the sender ID and the time it was received, is transmitted from your device to our backend server, and from there to Anthropic's Claude API</strong>, which performs the extraction. This means the content of your bank SMS messages leaves your device and is processed by a third-party service provider. It is not used to show you advertising, and it is not sold.</p>
+    </div>
+
+    <p style="margin-top:12px;">If your device is offline or the server cannot be reached, the message is held in a queue in the App's local database on your device and retried later. Once processed successfully, the queued copy is marked complete.</p>
+
+    <p style="margin-top:12px;">SMS reading is optional. If you decline the permission, the App remains fully usable and you can add transactions manually.</p>
+
+    <h3>2.3 Financial Records</h3>
+    <p>The following are stored on our backend server and linked to your account:</p>
     <ul>
-      <li>Bank transaction records (parsed from bank SMS)</li>
-      <li>Stock holdings fetched from Zerodha</li>
-      <li>Gold and metals portfolio data entered manually</li>
+      <li>Income and expense transactions, including amount, date, category, source and recipient</li>
+      <li>Budget plans, monthly allocations and spending against them</li>
+      <li>Stock holdings retrieved from Zerodha</li>
+      <li>Mutual fund holdings, including data imported from CAS statements</li>
+      <li>Gold, silver and other precious-metal holdings</li>
+      <li>Other assets and liabilities you record</li>
+      <li>Net worth snapshots calculated over time</li>
+      <li>Your custom categories, payment sources and recipients</li>
     </ul>
 
-    <p style="margin-top:16px;"><strong>2.4 Notifications</strong><br>
-    <em>Permission: POST_NOTIFICATIONS</em></p>
-    <p style="margin-top:8px;">Used only to notify you when a bank SMS has been automatically recorded as a transaction.</p>
+    <h3>2.4 Zerodha Broker Credentials</h3>
+    <p>If you choose to connect a Zerodha account, your <strong>Zerodha API key, API secret and the access token</strong> issued by Zerodha are stored on our backend server so that your holdings can be refreshed without you re-authenticating each time. Connecting Zerodha is entirely optional, and you may disconnect it at any time.</p>
+
+    <h3>2.5 Notifications</h3>
+    <p class="perm">Permission: POST_NOTIFICATIONS</p>
+    <p style="margin-top:8px;">Used only to tell you when a bank SMS has been recorded as a transaction. We do not send marketing notifications.</p>
 
     <!-- 3 -->
-    <h2>3. Data Storage</h2>
-    <table>
-      <tr>
-        <th>Data</th>
-        <th>Where Stored</th>
-        <th>Encrypted</th>
-      </tr>
-      <tr>
-        <td>Session token</td>
-        <td>Local device (SharedPreferences)</td>
-        <td>No</td>
-      </tr>
-      <tr>
-        <td>Email address</td>
-        <td>Local device (SharedPreferences)</td>
-        <td>No</td>
-      </tr>
-      <tr>
-        <td>Transaction records</td>
-        <td>Local device (Room database)</td>
-        <td>No</td>
-      </tr>
-      <tr>
-        <td>Zerodha credentials</td>
-        <td>Transmitted to backend; not stored locally</td>
-        <td>N/A</td>
-      </tr>
-    </table>
-    <p>Your data is not synced to any cloud service except through our backend API (hosted at wealth-backend-demo.onrender.com) which handles authentication and Zerodha data fetching. Encryption of locally stored data is planned for a future update.</p>
+    <h2>3. Where Your Data Is Stored</h2>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Data</th>
+          <th>Where it is stored</th>
+          <th>Additional field-level encryption</th>
+        </tr>
+        <tr>
+          <td>Name, email, phone</td>
+          <td>Backend database</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Session token, email, name</td>
+          <td>Your device (SharedPreferences)</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Login IP address and user-agent</td>
+          <td>Backend database</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Transactions, budgets, holdings, net worth</td>
+          <td>Backend database</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Bank SMS content</td>
+          <td>Sent to backend and to Anthropic for parsing; queued temporarily on your device when offline</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>Zerodha API secret and access token</td>
+          <td>Backend database</td>
+          <td><strong>Yes — AES-256-GCM</strong></td>
+        </tr>
+        <tr>
+          <td>Zerodha API key</td>
+          <td>Backend database</td>
+          <td>No — an API key is an identifier, not a secret</td>
+        </tr>
+      </table>
+    </div>
+    <p><strong>Two layers apply.</strong> The database as a whole is encrypted at rest by our hosting provider. On top of that, your Zerodha API secret and access token — the credentials that could act on your brokerage account — are individually encrypted by us before they are written, so they remain unreadable even to someone who obtains a copy of the database.</p>
+    <p style="margin-top:10px;">All communication between the App and our server uses HTTPS, and the App blocks unencrypted HTTP traffic entirely. Passwords are stored as one-way bcrypt hashes and cannot be recovered by anyone, including us. Extending field-level encryption to other stored records is planned, and this policy will be updated when it ships.</p>
 
     <!-- 4 -->
     <h2>4. Data We Do NOT Collect</h2>
     <ul>
       <li>Location data</li>
-      <li>Contacts, camera, or microphone</li>
-      <li>Advertising or analytics data</li>
-      <li>Usage behavior or tracking</li>
-      <li>Personal (non-bank) SMS messages</li>
+      <li>Contacts, camera, microphone or photos</li>
+      <li>Advertising identifiers, analytics or usage tracking</li>
+      <li>SMS messages from any sender other than the recognised bank shortcodes listed above</li>
+      <li>Call logs</li>
     </ul>
 
     <!-- 5 -->
     <h2>5. Third-Party Services</h2>
-    <table>
-      <tr>
-        <th>Service</th>
-        <th>Purpose</th>
-        <th>Their Privacy Policy</th>
-      </tr>
-      <tr>
-        <td>Zerodha Kite API</td>
-        <td>Fetch stock holdings</td>
-        <td><a href="https://zerodha.com/policies/privacy" target="_blank">zerodha.com/policies/privacy</a></td>
-      </tr>
-      <tr>
-        <td>Render</td>
-        <td>Backend server hosting</td>
-        <td><a href="https://render.com/privacy" target="_blank">render.com/privacy</a></td>
-      </tr>
-    </table>
-    <p>No other third-party services are used.</p>
+    <p>We share data with the following service providers, only to the extent needed to operate the App:</p>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Service</th>
+          <th>What it receives</th>
+          <th>Their policy</th>
+        </tr>
+        <tr>
+          <td>Anthropic (Claude API)</td>
+          <td>The content of your bank SMS messages, for transaction extraction</td>
+          <td><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a></td>
+        </tr>
+        <tr>
+          <td>Zerodha (Kite API)</td>
+          <td>Your Zerodha credentials, to retrieve your holdings</td>
+          <td><a href="https://zerodha.com/policies/privacy" target="_blank" rel="noopener">zerodha.com/policies/privacy</a></td>
+        </tr>
+        <tr>
+          <td>Render</td>
+          <td>Hosts our backend server; processes data in transit</td>
+          <td><a href="https://render.com/privacy" target="_blank" rel="noopener">render.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td>Supabase</td>
+          <td>Hosts the database in which your records are stored</td>
+          <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
+        </tr>
+      </table>
+    </div>
+    <p>We do not share your data with any other third party, and we do not sell it to anyone.</p>
 
     <!-- 6 -->
-    <h2>6. Data Retention and Deletion</h2>
-    <p>All financial data is stored locally on your device. Uninstalling the App removes all locally stored data. To request deletion of any data held on our backend server, contact us at the email below.</p>
+    <h2>6. Data Retention and Account Deletion</h2>
+    <p>We keep your data for as long as your account exists. You can ask us to delete your account and everything associated with it at any time.</p>
+
+    <p style="margin-top:12px;"><strong>How to request deletion.</strong> Email us using the contact details in section 9, from the email address registered to your account, asking for your account to be deleted. We will confirm and complete the deletion within 30 days.</p>
+
+    <p style="margin-top:12px;"><strong>What gets deleted.</strong> Your account record, all transactions, budgets, holdings, mutual funds, metals, other assets, liabilities, net worth history, categories, sources, recipients, stored bank SMS records, login sessions and any stored Zerodha credentials are permanently removed from our database.</p>
+
+    <p style="margin-top:12px;">Uninstalling the App removes the data held on your device, but does not by itself delete the records held on our server — please use the process above for that.</p>
 
     <!-- 7 -->
-    <h2>7. Children's Privacy</h2>
-    <p>This App is not intended for users under 18 years of age. We do not knowingly collect data from minors.</p>
+    <h2>7. Your Rights</h2>
+    <p>You may request a copy of the data we hold about you, ask us to correct anything inaccurate, withdraw the SMS permission at any time through Android's system settings, disconnect your Zerodha account, or have your account deleted entirely. Use the contact details below for any of these.</p>
 
     <!-- 8 -->
-    <h2>8. Changes to This Policy</h2>
-    <p>We may update this policy as the App evolves. Changes will be reflected with a new "Last updated" date. Continued use of the App constitutes acceptance of the updated policy.</p>
+    <h2>8. Children's Privacy</h2>
+    <p>This App is not intended for users under 18 years of age. We do not knowingly collect data from minors. If you believe a minor has created an account, contact us and we will remove it.</p>
 
     <!-- 9 -->
-    <h2>9. Contact</h2>
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this policy as the App evolves. Changes will be reflected with a new "Last updated" date at the top of this page. Where a change materially affects how your data is handled, we will make that clear in the App.</p>
+
+    <!-- 10 -->
+    <h2>10. Contact</h2>
     <div class="contact-box">
       <p><strong>App:</strong> Personal Wealth Manager</p>
       <p><strong>Developer:</strong> Tanmay Rane</p>
