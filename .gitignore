@@ -1,2 +1,9 @@
 .DS_Store
 Thumbs.db
+
+# Claude Code agent/skill tooling — local, not project source.
+# .claude/settings.json stays tracked (shared project config); ignore only these.
+.agents/
+.claude/skills/
+.claude/agents/
+skills-lock.json
